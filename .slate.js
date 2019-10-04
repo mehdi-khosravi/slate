@@ -34,14 +34,33 @@ var pushThirdTop = slate.operation("push", {
 });
 
 
-var pushThirdMiddle = slate.operation("push", {
-  "direction" : "bottom",
-  "style" : "center"
-});
+var pushThirdMiddle = slate.operation("move", {
+    "width" : "screenSizeX",
+    "height" : "screenSizeY/3",
+    "x" : "screenOriginX",
+    "y" : "screenSizeY/3 + screenOriginY"
+  });
 
 var pushThirdBottom = slate.operation("push", {
   "direction" : "bottom",
   "style" : "bar-resize:screenSizeY/3"
+});
+
+var pushThirdLeft = slate.operation("push", {
+  "direction" : "left",
+  "style" : "bar-resize:screenSizeX/3"
+});
+
+var pushThirdRight = slate.operation("push", {
+  "direction" : "right",
+  "style" : "bar-resize:screenSizeX/3"
+});
+
+var pushThirdCenter = slate.operation("move", {
+  "width" : "screenSizeX/3",
+  "height" : "screenSizeY",
+  "x" : "screenSizeX/3 + screenOriginX",
+  "y" : "screenOriginY"
 });
 
 var throw1 = slate.operation("throw", {
@@ -82,7 +101,7 @@ slate.bind("down" + modifier, function(win) {
 slate.bind("left" + modifier, function(win) {
   win.doOperation(pushHalfLeft);
 });
-    
+
 slate.bind("right" + modifier, function(win) {
   win.doOperation(pushHalfRight);
 });
@@ -97,15 +116,21 @@ slate.bind("i" + modifier, function(win) {
 });
 
 slate.bind("j" + modifier, function(win) {
-  win.doOperation(
-    slate.operation("move", {
-    "width" : "screenSizeX",
-    "height" : "screenSizeY/3",
-    "x" : "screenOriginX",
-    "y" : "screenSizeY/3 + screenOriginY"
-  }))
+  win.doOperation(pushThirdMiddle);
 });
 
 slate.bind("n" + modifier, function(win) {
   win.doOperation(pushThirdBottom);
+});
+
+slate.bind("k" + modifier, function(win) {
+  win.doOperation(pushThirdLeft);
+});
+
+slate.bind("l" + modifier, function(win) {
+  win.doOperation(pushThirdCenter);
+});
+
+slate.bind(";" + modifier, function(win) {
+  win.doOperation(pushThirdRight);
 });
