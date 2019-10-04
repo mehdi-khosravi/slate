@@ -99,11 +99,11 @@ slate.bind("i" + modifier, function(win) {
 slate.bind("j" + modifier, function(win) {
   win.doOperation(
     slate.operation("move", {
-    "x" : 0,
-    "y" : "screenSizeY/3",
     "width" : "screenSizeX",
-    "height" : "screenSizeY/3"
-  }));
+    "height" : "screenSizeY/3",
+    "x" : "screenOriginX",
+    "y" : "screenSizeY/3 + screenOriginY"
+  }))
 });
 
 slate.bind("n" + modifier, function(win) {
