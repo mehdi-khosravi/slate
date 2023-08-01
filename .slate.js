@@ -33,6 +33,10 @@ var pushThirdTop = slate.operation("push", {
   "style" : "bar-resize:screenSizeY/3"
 });
 
+var pushTwoThirdTop = slate.operation("push", {
+  "direction" : "top",
+  "style" : "bar-resize:screenSizeY - screenSizeY/3"
+});
 
 var pushThirdMiddle = slate.operation("move", {
     "width" : "screenSizeX",
@@ -46,15 +50,31 @@ var pushThirdBottom = slate.operation("push", {
   "style" : "bar-resize:screenSizeY/3"
 });
 
+var pushTwoThirdBottom = slate.operation("push", {
+  "direction" : "bottom",
+  "style" : "bar-resize:screenSizeY - screenSizeY/3"
+});
+
 var pushThirdLeft = slate.operation("push", {
   "direction" : "left",
   "style" : "bar-resize:screenSizeX/3"
+});
+
+var pushTwoThirdLeft = slate.operation("push", {
+  "direction" : "left",
+  "style" : "bar-resize:screenSizeX - screenSizeX/3"
 });
 
 var pushThirdRight = slate.operation("push", {
   "direction" : "right",
   "style" : "bar-resize:screenSizeX/3"
 });
+
+var pushTwoThirdRight = slate.operation("push", {
+  "direction" : "right",
+  "style" : "bar-resize:screenSizeX - screenSizeX/3"
+});
+
 
 var pushThirdCenter = slate.operation("move", {
   "width" : "screenSizeX/3",
@@ -115,6 +135,10 @@ slate.bind("i" + modifier, function(win) {
   win.doOperation(pushThirdTop);
 });
 
+slate.bind("u" + modifier, function(win) {
+  win.doOperation(pushTwoThirdTop);
+});
+
 slate.bind("j" + modifier, function(win) {
   win.doOperation(pushThirdMiddle);
 });
@@ -123,8 +147,17 @@ slate.bind("n" + modifier, function(win) {
   win.doOperation(pushThirdBottom);
 });
 
+slate.bind("b" + modifier, function(win) {
+  win.doOperation(pushTwoThirdBottom);
+});
+
+
 slate.bind("k" + modifier, function(win) {
   win.doOperation(pushThirdLeft);
+});
+
+slate.bind("o" + modifier, function(win) {
+  win.doOperation(pushTwoThirdLeft);
 });
 
 slate.bind("l" + modifier, function(win) {
@@ -133,4 +166,8 @@ slate.bind("l" + modifier, function(win) {
 
 slate.bind(";" + modifier, function(win) {
   win.doOperation(pushThirdRight);
+});
+
+slate.bind("[" + modifier, function(win) {
+  win.doOperation(pushTwoThirdRight);
 });
